@@ -156,8 +156,6 @@ of using Java JRE. Follow the prompts to install Java.
 	
 .. image:: JREdownloadwin.jpg
 	:align: center
-	:height: 300 px
-	:width: 500 px
 	:alt: Java JRE download for Windows
 	
 To install the remaining dependencies, SPARTA is distributed with installers for each remaining
@@ -173,8 +171,7 @@ following order:
 #. R (see the "Important" below before installing)
 #. gzip
 
-.. important:: When installing R, **make sure that the 32-bit files are also installed**. You
-may have to check the box when the installer presents you with what files to install.
+.. important:: When installing R, **make sure that the 32-bit files are also installed**. You may have to check the box when the installer presents you with what files to install.
 
 Now, there is one remaining batch file called "add_python_and_R_to_path.bat". This will add
 the Python, R, and gzip executables to your path so you can run them from the terminal. To
@@ -241,13 +238,15 @@ Type::
     
 This is the name of the folder on the desktop that contains the input example data.
 Hit Enter/Return.
-From here, the software will trim, QC, align, and count transcript abundance for each sample.
+From here, the software will trim, align, and count transcript abundance for each sample.
 All output/analyses are put in a folder that SPARTA generates on the desktop called "RNAseq_Data".
 Within this folder are separate folders for each SPARTA run that are denoted by the date (e.g. 2015-06-04).
 Within these folders are four more folders that separate each step of the analysis and are
 called: 1) QC, 2) Bowtie, 3) HTSeq, and 4) DEanalysis.
 
-Once the trimming, QC, alignment, and counting are complete, SPARTA will again pause and prompt
+.. note:: There is a known issue here. FastQC will *not* run non-interactively on Windows (but feel free to contribute to the project and fix this issue!). It is important to QC your data and FastQC can be run interactively by navigating to the FastQC folder: SPARTA_Windows-master -> QC_analysis -> FastQC -> run_fastqc.bat. FastQC should now start and to analyze your trimmed files within FastQC: File -> Open -> RNAseq_Data -> dateofyourrun -> QC -> yourtrimmedfiles.
+
+Once the trimming, alignment, and counting are complete, SPARTA will again pause and prompt
 the user for how many experimental conditions exist within the analysis.
 
 The output at this point will look like this:

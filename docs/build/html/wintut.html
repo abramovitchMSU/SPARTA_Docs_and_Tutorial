@@ -51,7 +51,7 @@
             
   <div class="section" id="windows-tutorial">
 <span id="wintut"></span><h1>Windows tutorial<a class="headerlink" href="#windows-tutorial" title="Permalink to this headline">¶</a></h1>
-<p><strong>Download the workflow</strong>: <a class="reference external" href="http://www.github.com/biobenkj/SPARTA_Windows/archive/master.zip">SPARTA for Windows</a></p>
+<p><strong>Download the workflow</strong>: <a class="reference external" href="http://www.github.com/abramovitchMSU/SPARTA_Windows/archive/master.zip">SPARTA for Windows</a></p>
 <ol class="arabic simple">
 <li><a class="reference internal" href="#introductionwin"><span>Introduction</span></a></li>
 <li><a class="reference internal" href="#basic-terminal-commandswin"><span>Basic Terminal Commands</span></a></li>
@@ -192,8 +192,10 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.31-b07, mixed mode)
 the tools require Java to function (Trimmomatic and FastQC). Let&#8217;s download and install a
 suitable version of <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java</a>
 (see image below). You will want to download and install the red boxed version of Java JRE.
-Follow the prompts to install Java.</p>
+You will also need to click on the button (red arrow) to accept the terms and conditions
+of using Java JRE. Follow the prompts to install Java.</p>
 <a class="reference internal image-reference" href="_images/javadownloadmac.jpg"><img alt="Java JRE download for Mac" class="align-center" src="_images/javadownloadmac.jpg" style="width: 500px; height: 300px;" /></a>
+<img alt="Java JRE download for Windows" class="align-center" src="_images/JREdownloadwin.jpg" />
 <p>To install the remaining dependencies, SPARTA is distributed with installers for each remaining
 piece of software, however, there is an ideal order with which to install them.</p>
 <p>Navigate to the SPARTA_Windows-master folder and then into the &#8220;Software_To_Install&#8221; folder.
@@ -203,9 +205,13 @@ following order:</p>
 <li>numpy</li>
 <li>vcredist</li>
 <li>HTSeq</li>
-<li>R</li>
+<li>R (see the &#8220;Important&#8221; below before installing)</li>
 <li>gzip</li>
 </ol>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">When installing R, <strong>make sure that the 32-bit files are also installed</strong>. You may have to check the box when the installer presents you with what files to install.</p>
+</div>
 <p>Now, there is one remaining batch file called &#8220;add_python_and_R_to_path.bat&#8221;. This will add
 the Python, R, and gzip executables to your path so you can run them from the terminal. To
 execute this script, right-click on the file and then click on the option called &#8220;Run as administrator&#8221;.
@@ -263,12 +269,16 @@ the user:</p>
 </div>
 <p>This is the name of the folder on the desktop that contains the input example data.
 Hit Enter/Return.
-From here, the software will trim, QC, align, and count transcript abundance for each sample.
+From here, the software will trim, align, and count transcript abundance for each sample.
 All output/analyses are put in a folder that SPARTA generates on the desktop called &#8220;RNAseq_Data&#8221;.
 Within this folder are separate folders for each SPARTA run that are denoted by the date (e.g. 2015-06-04).
 Within these folders are four more folders that separate each step of the analysis and are
 called: 1) QC, 2) Bowtie, 3) HTSeq, and 4) DEanalysis.</p>
-<p>Once the trimming, QC, alignment, and counting are complete, SPARTA will again pause and prompt
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is a known issue here. FastQC will <em>not</em> run non-interactively on Windows. It is important to QC your data and FastQC can be run interactively by navigating to the</p>
+</div>
+<p>Once the trimming, alignment, and counting are complete, SPARTA will again pause and prompt
 the user for how many experimental conditions exist within the analysis.</p>
 <p>The output at this point will look like this:</p>
 <a class="reference internal image-reference" href="_images/conditionoutput.jpg"><img alt="Condition output" class="align-center" src="_images/conditionoutput.jpg" style="width: 500px; height: 300px;" /></a>

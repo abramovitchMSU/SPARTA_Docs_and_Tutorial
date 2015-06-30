@@ -3,7 +3,7 @@
 Windows tutorial
 ================
 
-**Download the workflow**: `SPARTA for Windows <http://www.github.com/biobenkj/SPARTA_Windows/archive/master.zip>`_
+**Download the workflow**: `SPARTA for Windows <http://www.github.com/abramovitchMSU/SPARTA_Windows/archive/master.zip>`_
 
 #. :ref:`introductionwin`
 
@@ -145,13 +145,18 @@ If the output does *not* look something like this, Java is likely not installed 
 the tools require Java to function (Trimmomatic and FastQC). Let's download and install a 
 suitable version of `Java <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_
 (see image below). You will want to download and install the red boxed version of Java JRE.
-Follow the prompts to install Java.
+You will also need to click on the button (red arrow) to accept the terms and conditions
+of using Java JRE. Follow the prompts to install Java.
 
 .. image:: javadownloadmac.jpg
 	:align: center
 	:height: 300 px
 	:width: 500 px
 	:alt: Java JRE download for Mac
+	
+.. image:: JREdownloadwin.jpg
+	:align: center
+	:alt: Java JRE download for Windows
 	
 To install the remaining dependencies, SPARTA is distributed with installers for each remaining
 piece of software, however, there is an ideal order with which to install them.
@@ -163,8 +168,10 @@ following order:
 #. numpy
 #. vcredist
 #. HTSeq
-#. R
+#. R (see the "Important" below before installing)
 #. gzip
+
+.. important:: When installing R, **make sure that the 32-bit files are also installed**. You may have to check the box when the installer presents you with what files to install.
 
 Now, there is one remaining batch file called "add_python_and_R_to_path.bat". This will add
 the Python, R, and gzip executables to your path so you can run them from the terminal. To
@@ -231,13 +238,15 @@ Type::
     
 This is the name of the folder on the desktop that contains the input example data.
 Hit Enter/Return.
-From here, the software will trim, QC, align, and count transcript abundance for each sample.
+From here, the software will trim, align, and count transcript abundance for each sample.
 All output/analyses are put in a folder that SPARTA generates on the desktop called "RNAseq_Data".
 Within this folder are separate folders for each SPARTA run that are denoted by the date (e.g. 2015-06-04).
 Within these folders are four more folders that separate each step of the analysis and are
 called: 1) QC, 2) Bowtie, 3) HTSeq, and 4) DEanalysis.
 
-Once the trimming, QC, alignment, and counting are complete, SPARTA will again pause and prompt
+.. note:: There is a known issue here. FastQC will *not* run non-interactively on Windows. It is important to QC your data and FastQC can be run interactively by navigating to the 
+
+Once the trimming, alignment, and counting are complete, SPARTA will again pause and prompt
 the user for how many experimental conditions exist within the analysis.
 
 The output at this point will look like this:
