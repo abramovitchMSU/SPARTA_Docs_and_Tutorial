@@ -156,6 +156,8 @@ of using Java JRE. Follow the prompts to install Java.
 	
 .. image:: JREdownloadwin.jpg
 	:align: center
+	:height: 750 px
+	:width: 950 px
 	:alt: Java JRE download for Windows
 	
 To install the remaining dependencies, SPARTA is distributed with installers for each remaining

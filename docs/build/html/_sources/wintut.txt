@@ -156,6 +156,8 @@ of using Java JRE. Follow the prompts to install Java.
 	
 .. image:: JREdownloadwin.jpg
 	:align: center
+	:height: 750 px
+	:width: 950 px
 	:alt: Java JRE download for Windows
 	
 To install the remaining dependencies, SPARTA is distributed with installers for each remaining
@@ -244,7 +246,7 @@ Within this folder are separate folders for each SPARTA run that are denoted by 
 Within these folders are four more folders that separate each step of the analysis and are
 called: 1) QC, 2) Bowtie, 3) HTSeq, and 4) DEanalysis.
 
-.. note:: There is a known issue here. FastQC will *not* run non-interactively on Windows. It is important to QC your data and FastQC can be run interactively by navigating to the 
+.. note:: There is a known issue here. FastQC will *not* run non-interactively on Windows (but feel free to contribute to the project and fix this issue!). It is important to QC your data and FastQC can be run interactively by navigating to the FastQC folder: SPARTA_Windows-master -> QC_analysis -> FastQC -> run_fastqc.bat. FastQC should now start and to analyze your trimmed files within FastQC: File -> Open -> RNAseq_Data -> dateofyourrun -> QC -> yourtrimmedfiles.
 
 Once the trimming, alignment, and counting are complete, SPARTA will again pause and prompt
 the user for how many experimental conditions exist within the analysis.

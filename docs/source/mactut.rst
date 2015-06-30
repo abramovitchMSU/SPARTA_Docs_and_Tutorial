@@ -113,12 +113,19 @@ If the output does *not* look something like this, Java is likely not installed 
 the tools require Java to function (Trimmomatic and FastQC). Let's download and install a 
 suitable version of `Java <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_
 (see image below). You will want to download and install the red boxed version of Java JRE.
-Follow the prompts to install Java.
+You will also need to click on the button (red arrow) to accept the terms and conditions
+of using Java JRE. Follow the prompts to install Java.
 
 .. image:: javadownloadmac.jpg
 	:align: center
 	:height: 300 px
 	:width: 500 px
+	:alt: Java JRE download for Mac
+	
+.. image:: JREdownloadmac.jpg
+	:align: center
+	:height: 750 px
+	:width: 950 px
 	:alt: Java JRE download for Mac
 	
 To install NumPy, go back to or open the Terminal and type::
