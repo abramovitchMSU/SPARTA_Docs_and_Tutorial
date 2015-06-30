@@ -145,13 +145,20 @@ If the output does *not* look something like this, Java is likely not installed 
 the tools require Java to function (Trimmomatic and FastQC). Let's download and install a 
 suitable version of `Java <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_
 (see image below). You will want to download and install the red boxed version of Java JRE.
-Follow the prompts to install Java.
+You will also need to click on the button (red arrow) to accept the terms and conditions
+of using Java JRE. Follow the prompts to install Java.
 
 .. image:: javadownloadmac.jpg
 	:align: center
 	:height: 300 px
 	:width: 500 px
 	:alt: Java JRE download for Mac
+	
+.. image:: JREdownloadwin.jpg
+	:align: center
+	:height: 300 px
+	:width: 500 px
+	:alt: Java JRE download for Windows
 	
 To install the remaining dependencies, SPARTA is distributed with installers for each remaining
 piece of software, however, there is an ideal order with which to install them.
@@ -163,8 +170,11 @@ following order:
 #. numpy
 #. vcredist
 #. HTSeq
-#. R
+#. R (see the "Important" below before installing)
 #. gzip
+
+.. important:: When installing R, **make sure that the 32-bit files are also installed**. You
+may have to check the box when the installer presents you with what files to install.
 
 Now, there is one remaining batch file called "add_python_and_R_to_path.bat". This will add
 the Python, R, and gzip executables to your path so you can run them from the terminal. To
