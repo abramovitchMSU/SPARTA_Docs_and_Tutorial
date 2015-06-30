@@ -46,7 +46,8 @@ that contains the input data. To see an example of appropriate input data, look 
 ExampleData folder within the SPARTA_Windows-master folder.
 
 To download a reference genome and genome feature file for your favorite bacteria, go to
-the `Ensembl website <http://bacteria.ensembl.org/info/website/ftp/index.html>`_.
+the `Ensembl website <http://bacteria.ensembl.org/info/website/ftp/index.html>`_. The reference
+genome and feature file are already present for the ExampleData.
 
 .. _basic-terminal-commandswin:
 
