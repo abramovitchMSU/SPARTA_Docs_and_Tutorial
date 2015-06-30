@@ -240,7 +240,8 @@ Each condition has 2 replicates. The next prompt will read::
     As an example, please see the 'conditions_input_example.txt' in the DEanalysis folder.
     Once you have entered the file names, hit Enter/Return:
     
-At this point, we need to do a few things.
+At this point, we need to edit a text file (conditions_input.txt) to tell SPARTA which file belongs to a given condition.
+To do this:
 
 #. Navigate to the SPARTA output folder called RNAseq_Data located on the desktop
 #. Go to the current run folder (will be the last folder listed if sorted by name)
