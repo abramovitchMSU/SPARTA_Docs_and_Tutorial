@@ -376,15 +376,14 @@ and their usage.
 
 Options::
 
+  Usage: python SPARTA.py [options]
+
+	Simple Program for Automated reference-based bacterial RNA-seq Transcriptome
+	Analysis (SPARTA)
+
   -h, --help            show this help message and exit
-  --SE                  Single-end read input. Default input choice is single-
-                        end if nothing is specified
-  --PE                  Paired-end read input. Must have the exact same file
-                        name and end with _F for the forward read and _R for
-                        the reverse read
-  --cleanup=CLEANUP     Clean up the intermediate files to save space. Default
-                        action is to retain the intermediate files. Usage:
-                        --cleanup=True
+  --cleanup             Clean up the intermediate files to save space. Default
+                        action is to retain the intermediate files.
   --verbose             Display more output for each step of the analysis.
   --noninteractive      Non-interactive mode. This is for running SPARTA
                         without any user input. Assumes data is on the
@@ -392,6 +391,11 @@ Options::
                         out the configuration file (ConfigFile.txt) with the
                         appropriate experimental conditions in the SPARTA
                         folder.
+  --threads=THREADS     Define the number of threads that SPARTA should run
+                        with. This will enable some speed-up on multi-
+                        processor machines. As a generality, define the number
+                        of threads as the same number of cores in your
+                        computer. Default is 2.
 
   Trimmomatic options:
     The order the options will be run are: ILLUMINACLIP, LEADING,
@@ -410,6 +414,21 @@ Options::
     --slidewin=SLIDINGWINDOW
                         SLIDINGWINDOW options. Default is SLIDINGWINDOW:4:15.
                         Usage: --slidewin=<window_size>:<required_quality>
+    --minlentrim=MINLENTRIM
+                        Set the minimum read length to keep in base pairs.
+                        Default is 36. Usage: --minlentrim=<readlength>
+
+  Bowtie options:
+    --mismatch=MISMATCH
+                        Output alignments with at most a defined number of
+                        mismatches. Usage: --mismatch=<integer_value>
+    --otherbowtieoptions=OTHERBOWTIEOPTIONS
+                        Bowtie has so many options that it is not worth
+                        listing them here. Go to http://bowtie-
+                        bio.sourceforge.net/manual.shtml#command-line for the
+                        manual and all available options. Usage:
+                        --otherbowtieoptions='all options inputed as a string
+                        (note the quotes!)'
 
   HTSeq options:
     --stranded=STRANDED
@@ -419,6 +438,8 @@ Options::
     --minqual=MINQUAL   Skip all reads with quality lower than the given
                         value. Default is --minqual=10. Usage:
                         --minqual=<value>
+    --type=TYPE         The feature type (3rd column in GTF file) to be used.
+                        Default is --type=exon (suitable for RNA-seq analysis)
     --idattr=IDATTR     Feature ID from the GTF file to identify counts in the
                         output table Default is --idattr=gene_id. Usage:
                         --idattr=<id attribute>
