@@ -3,7 +3,7 @@
 Windows tutorial
 ================
 
-**Download the workflow**: `SPARTA for Windows <http://www.github.com/abramovitchMSU/SPARTA_Windows/archive/master.zip>`_
+**Download the workflow**: `SPARTA for Windows <http://www.github.com/biobenkj/SPARTA_Windows/archive/master.zip>`_
 
 #. :ref:`introductionwin`
 
