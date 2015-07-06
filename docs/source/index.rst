@@ -27,10 +27,10 @@ Contents:
 .. toctree::
    :hidden:
 
-   faq
    mactut
    wintut
    lintut
+   faq
    license
    releasenotes
    citationacknowledgements
