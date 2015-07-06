@@ -22,15 +22,18 @@ How to get and use SPARTA:
 
 **Linux Users** - :doc:`lintut`
 
+**Cloud computing tutorial** - :doc:`amazonec2`
+
 Contents:
 ^^^^^^^^^
 .. toctree::
    :hidden:
 
-   faq
    mactut
    wintut
    lintut
+   amazonec2
+   faq
    license
    releasenotes
    citationacknowledgements

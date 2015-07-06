@@ -3,7 +3,10 @@
 Citation
 --------
 
-Insert citation here
+
+SPARTA: Simple Program for Automated reference-based bacterial RNA-seq Transcriptome Analysis
+Benjamin K Johnson, Matthew B Scholz, Tracy K Teal, Robert B Abramovitch
+bioRxiv doi: http://dx.doi.org/10.1101/021915
 
 
 Acknowledgements

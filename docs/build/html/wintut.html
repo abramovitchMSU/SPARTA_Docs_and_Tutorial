@@ -51,7 +51,7 @@
             
   <div class="section" id="windows-tutorial">
 <span id="wintut"></span><h1>Windows tutorial<a class="headerlink" href="#windows-tutorial" title="Permalink to this headline">¶</a></h1>
-<p><strong>Download the workflow</strong>: <a class="reference external" href="http://www.github.com/abramovitchMSU/SPARTA_Windows/archive/master.zip">SPARTA for Windows</a></p>
+<p><strong>Download the workflow</strong>: <a class="reference external" href="http://www.github.com/biobenkj/SPARTA_Windows/archive/master.zip">SPARTA for Windows</a></p>
 <ol class="arabic simple">
 <li><a class="reference internal" href="#introductionwin"><span>Introduction</span></a></li>
 <li><a class="reference internal" href="#basic-terminal-commandswin"><span>Basic Terminal Commands</span></a></li>
@@ -77,7 +77,8 @@ with a reference genome file in FASTA format and a genome feature file (.gtf) wi
 that contains the input data. To see an example of appropriate input data, look inside the
 ExampleData folder within the SPARTA_Windows-master folder.</p>
 <p>To download a reference genome and genome feature file for your favorite bacteria, go to
-the <a class="reference external" href="http://bacteria.ensembl.org/info/website/ftp/index.html">Ensembl website</a>.</p>
+the <a class="reference external" href="http://bacteria.ensembl.org/info/website/ftp/index.html">Ensembl website</a>. The reference
+genome and feature file are already present for the ExampleData.</p>
 </div>
 <div class="section" id="basic-terminal-commands">
 <span id="basic-terminal-commandswin"></span><h2>Basic Terminal Commands<a class="headerlink" href="#basic-terminal-commands" title="Permalink to this headline">¶</a></h2>
@@ -304,12 +305,13 @@ As an example, please see the &#39;conditions_input_example.txt&#39; in the DEan
 Once you have entered the file names, hit Enter/Return:
 </pre></div>
 </div>
-<p>At this point, we need to do a few things.</p>
+<p>At this point, we need to edit a text file (conditions_input.txt) to tell SPARTA which file belongs to a given condition.
+To do this:</p>
 <ol class="arabic simple">
 <li>Navigate to the SPARTA output folder called RNAseq_Data located on the desktop</li>
 <li>Go to the current run folder (will be the last folder listed if sorted by name)</li>
 <li>Go into the DEanalysis folder</li>
-<li>Open the conditions_input.txt file in a text editor (NOT MICROSOFT WORD) such as TextEdit</li>
+<li>Open the conditions_input.txt file in a text editor (NOT MICROSOFT WORD) such as Notepad</li>
 </ol>
 <p>The number of experimental conditions listed are based on the number entered at the prompt
 asking &#8220;How many conditions are there?:&#8221;. Thus, in our case, there are 4. The contents of
@@ -403,10 +405,14 @@ how to deal with batch effects that can be found <a class="reference external" h
 step to be tailored to specific use cases. Below are the different parameters that can be altered
 and their usage.</p>
 <p>Options:</p>
-<div class="highlight-python"><div class="highlight"><pre>-h, --help            show this help message and exit
---cleanup=CLEANUP     Clean up the intermediate files to save space. Default
-                      action is to retain the intermediate files. Usage:
-                      --cleanup=True
+<div class="highlight-python"><div class="highlight"><pre>Usage: python SPARTA.py [options]
+
+      Simple Program for Automated reference-based bacterial RNA-seq Transcriptome
+      Analysis (SPARTA)
+
+-h, --help            show this help message and exit
+--cleanup             Clean up the intermediate files to save space. Default
+                      action is to retain the intermediate files.
 --verbose             Display more output for each step of the analysis.
 --noninteractive      Non-interactive mode. This is for running SPARTA
                       without any user input. Assumes data is on the
@@ -414,6 +420,11 @@ and their usage.</p>
                       out the configuration file (ConfigFile.txt) with the
                       appropriate experimental conditions in the SPARTA
                       folder.
+--threads=THREADS     Define the number of threads that SPARTA should run
+                      with. This will enable some speed-up on multi-
+                      processor machines. As a generality, define the number
+                      of threads as the same number of cores in your
+                      computer. Default is 2.
 
 Trimmomatic options:
   The order the options will be run are: ILLUMINACLIP, LEADING,
@@ -432,6 +443,21 @@ Trimmomatic options:
   --slidewin=SLIDINGWINDOW
                       SLIDINGWINDOW options. Default is SLIDINGWINDOW:4:15.
                       Usage: --slidewin=&lt;window_size&gt;:&lt;required_quality&gt;
+  --minlentrim=MINLENTRIM
+                      Set the minimum read length to keep in base pairs.
+                      Default is 36. Usage: --minlentrim=&lt;readlength&gt;
+
+Bowtie options:
+  --mismatch=MISMATCH
+                      Output alignments with at most a defined number of
+                      mismatches. Usage: --mismatch=&lt;integer_value&gt;
+  --otherbowtieoptions=OTHERBOWTIEOPTIONS
+                      Bowtie has so many options that it is not worth
+                      listing them here. Go to http://bowtie-
+                      bio.sourceforge.net/manual.shtml#command-line for the
+                      manual and all available options. Usage:
+                      --otherbowtieoptions=&#39;all options inputed as a string
+                      (note the quotes!)&#39;
 
 HTSeq options:
   --stranded=STRANDED
@@ -441,6 +467,8 @@ HTSeq options:
   --minqual=MINQUAL   Skip all reads with quality lower than the given
                       value. Default is --minqual=10. Usage:
                       --minqual=&lt;value&gt;
+  --type=TYPE         The feature type (3rd column in GTF file) to be used.
+                      Default is --type=exon (suitable for RNA-seq analysis)
   --idattr=IDATTR     Feature ID from the GTF file to identify counts in the
                       output table Default is --idattr=gene_id. Usage:
                       --idattr=&lt;id attribute&gt;

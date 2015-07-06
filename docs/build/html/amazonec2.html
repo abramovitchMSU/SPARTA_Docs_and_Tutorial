@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cloud computing with SPARTA on Amazon EC2 &mdash; SPARTA 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="SPARTA 1.0 documentation" href="index.html" />
+    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="prev" title="Linux tutorial" href="lintut.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="faq.html" title="Frequently Asked Questions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lintut.html" title="Linux tutorial"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SPARTA 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cloud-computing-with-sparta-on-amazon-ec2">
+<span id="amazonec2"></span><h1>Cloud computing with SPARTA on Amazon EC2<a class="headerlink" href="#cloud-computing-with-sparta-on-amazon-ec2" title="Permalink to this headline">¶</a></h1>
+<p>The ability to perform large scale data analysis may require computational capacity not found
+on a personal computing environment. Thus, SPARTA is capable of running in the cloud or on
+high performance computing environments. In the subsequent tutorial, we describe the analysis
+process of computing differentially expressed genes using SPARTA and the provided ExampleData
+in the cloud with Amazon EC2.</p>
+<p>Contents:</p>
+<p><a class="reference internal" href="#createawsaccount"><span>Create an Amazon Web Services Account</span></a></p>
+<p><a class="reference internal" href="#maclinuxlogin"><span>Mac/Linux Login Procedure</span></a></p>
+<p><a class="reference internal" href="#winlogin"><span>Windows Login Procedure</span></a></p>
+<p><a class="reference internal" href="#analyzeexampledataec2"><span>Analyzing the RNA-seq ExampleData with SPARTA</span></a></p>
+<div class="section" id="create-an-amazon-web-services-account">
+<span id="createawsaccount"></span><h2>Create an Amazon Web Services Account<a class="headerlink" href="#create-an-amazon-web-services-account" title="Permalink to this headline">¶</a></h2>
+<p>First we need to create an Amazon Web Services (AWS) account. To do this:</p>
+<ol class="arabic simple">
+<li>Navigate to the <a class="reference external" href="http://aws.amazon.com">AWS site</a></li>
+<li>In the upper right corner, click on the &#8220;Sign In to the Console&#8221; button</li>
+<li>Enter your e-mail and make sure the &#8220;I am a new user&#8221; is selected</li>
+<li>Click on the &#8220;Sign in using our secure server&#8221; button to get started creating your account</li>
+<li>Enter your information and password into the relevant fields and click &#8220;Create account&#8221;</li>
+<li>Continue to input your necessary information as denoted by the fields with an asterisk (*)</li>
+<li>Read and click on the &#8220;I agree to the AWS terms&#8221; so that it is checked</li>
+<li>Click on the &#8220;Create account and continue&#8221; button</li>
+<li>From here you will need to enter your credit card information so that if you decide to go beyond the &#8220;Free tier&#8221; machines, they can charge you (computing time, even on large machines is pretty cheap). Also, you will need to verify your information and select a support plan that suites you.</li>
+</ol>
+<p>Now that you have created your account, we can log into the AWS console if you aren&#8217;t already.
+To do this:</p>
+<ol class="arabic simple">
+<li>Navigate to the <a class="reference external" href="http://aws.amazon.com">AWS site</a>.</li>
+<li>Click on the &#8220;My Account&#8221; in the upper right and select &#8220;AWS Management Console&#8221; from the menu options</li>
+<li>Log in with your user name and password</li>
+<li>Set your location to &#8220;N. Virginia&#8221; if you are in the midwest or another relevant location (upper right red circle) and click on EC2 (red circle on the left side of the page)</li>
+</ol>
+<img alt="AWS startup page" class="align-center" src="_images/awsstartup.jpg" />
+<ol class="arabic simple" start="5">
+<li>Select &#8220;Launch Instance&#8221;</li>
+</ol>
+<img alt="Launch EC2 instance" class="align-center" src="_images/launchinstancebutton.jpg" />
+<ol class="arabic simple" start="6">
+<li>Select the &#8220;Ubuntu Server 14.04 LTS (HVM), SSD Volume Type&#8221; machine image by clicking on &#8220;Select&#8221;</li>
+</ol>
+<img alt="Select Ubuntu image" class="align-center" src="_images/selectimage.jpg" />
+<ol class="arabic simple" start="7">
+<li>For working with the ExampleData we do not need significant hardware capacity, so for now, select the t2.micro instance type (red box). However, if you would like to analyze your own data, either the m4.large or m4.xlarge instance types are reasonable (blue box; these instances will charge you per hour, though are quite cheap). Then, click on &#8220;Review and Launch&#8221; (orange box).</li>
+</ol>
+<img alt="Select instance type" class="align-center" src="_images/selectinstance.jpg" />
+<ol class="arabic simple" start="8">
+<li>Ignore the warning and click &#8220;Launch&#8221; (orange box)</li>
+</ol>
+<img alt="Review and launch instance" class="align-center" src="_images/reviewandlaunch.jpg" />
+<ol class="arabic simple" start="9">
+<li>Create a new key pair and name it &#8220;SPARTA-example&#8221; (no quotes; red arrow). Then click on &#8220;Download Key Pair&#8221;. Save this .pem file. After you download and save your .pem file, click on the &#8220;Launch Instances&#8221; button.</li>
+</ol>
+<a class="reference internal image-reference" href="_images/keypairdownload.jpg"><img alt="Create and download a new key pair" class="align-center" src="_images/keypairdownload.jpg" style="width: 600px; height: 400px;" /></a>
+<ol class="arabic simple" start="10">
+<li>Select the &#8220;View Instances&#8221; button and wait until your &#8220;Instance State&#8221; turns green.</li>
+</ol>
+<img alt="Green light the instance" class="align-center" src="_images/greenlight.jpg" />
+<ol class="arabic simple" start="11">
+<li>Copy and paste the &#8220;Public DNS&#8221; into a text document (e.g. TextEdit or Notepad) and save it. This is your Amazon EC2 machine and you will need this to log into it.</li>
+</ol>
+<img alt="Public DNS" class="align-center" src="_images/publicdns.jpg" />
+<p>To log into the machine, follow either the <a class="reference internal" href="#maclinuxlogin"><span>Mac/Linux version</span></a> or the <a class="reference internal" href="#winlogin"><span>Windows version</span></a></p>
+</div>
+<div class="section" id="mac-linux-login-procedure">
+<span id="maclinuxlogin"></span><h2>Mac/Linux Login Procedure<a class="headerlink" href="#mac-linux-login-procedure" title="Permalink to this headline">¶</a></h2>
+<p>To log into the machine you just created, we need to use the .pem file and the Terminal. If
+you don&#8217;t remember how to get to the terminal, see the image in the Introduction in either the <a class="reference internal" href="mactut.html"><em>Mac OS X tutorial</em></a> or <a class="reference internal" href="lintut.html"><em>Linux tutorial</em></a>.</p>
+<p>Move the .pem file from your Downloads folder to your Desktop for the time being.</p>
+<p>Start up your terminal and type:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd ~/Desktop
+</pre></div>
+</div>
+<p>This will navigate to your Desktop. We will change the permissions to read only for you, the user:</p>
+<div class="highlight-python"><div class="highlight"><pre>chmod 400 SPARTA-example.pem
+</pre></div>
+</div>
+<p>Now, let&#8217;s log into our machine!</p>
+<p>To do this we will type something like this (NOTE THE DNS ADDRESS AFTER THE &#8216;ubuntu&#64;&#8217; IS NOT REAL. THIS IS WHERE YOU SHOULD PUT YOUR PUBLIC DNS FROM EARLIER):</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh -i ~/Desktop/SPARTA-example.pem ubuntu@ec2-your-public-dns-goes-here.compute-1.amazonaws.com
+</pre></div>
+</div>
+<p>What you are doing is logging in using the secure shell (ssh) command with your credentials in the .pem file as the user &#8216;ubuntu&#8217; to the machine &#8216;ec2-...-compute-1.amazonaws.com&#8217;.</p>
+<p>You should now see something like:</p>
+<div class="highlight-python"><div class="highlight"><pre>ubuntu@ip-345-67-89-10:
+</pre></div>
+</div>
+<p>Congratulations! You&#8217;re now on the cloud computer that you launched earlier!</p>
+</div>
+<div class="section" id="windows-login-procedure">
+<span id="winlogin"></span><h2>Windows Login Procedure<a class="headerlink" href="#windows-login-procedure" title="Permalink to this headline">¶</a></h2>
+<p>To log into the machine you just created, we need to use the .pem file, a key generator called PuTTYgen, and a secure shell (ssh) client called PuTTY.</p>
+<p>Download PuTTY and PuTTYgen from <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">here</a>.</p>
+<img alt="PuTTY download" class="align-center" src="_images/puttydownload.jpg" />
+<p>Move the .pem file from your Downloads folder to your Desktop for the time being.</p>
+<p>Open up PuTTYgen and click on &#8220;Load&#8221;. Navigate to your Desktop and select the SPARTA-example.pem, click &#8220;Open&#8221;.</p>
+<img alt="Load .pem file to generate a key" class="align-center" src="_images/puttygenkeyload.jpg" />
+<p>PuTTY should present you with a window that says something like &#8220;Successfully imported private key...&#8221;
+It also states in the window that we need to use the &#8220;Save private key&#8221; command. So, let&#8217;s do just that.</p>
+<p>Click &#8220;OK&#8221;</p>
+<p>Click on &#8220;Save private key&#8221;. Save it somewhere you know where it is (reasonably easy to find is always a good idea)
+It may ask you if you want to save it without a passphrase. Click &#8220;Yes&#8221;. Save it as &#8220;SPARTA-example&#8221; on the Desktop (no quotes).</p>
+<img alt="Save the private key" class="align-center" src="_images/puttygenkeysave.jpg" />
+<p>Now, let&#8217;s log into our machine!</p>
+<p>To do this, we will need to open up PuTTY (not PuTTYgen, which is what we were just using).
+Enter the Host Name (public DNS from earlier) into the &#8220;Host Name&#8221; box.</p>
+<img alt="Enter the public DNS into Host Name in PuTTY" class="align-center" src="_images/hostname.jpg" />
+<p>Look in the Category section (left-hand side of the window) and navigate to the SSH section (about halfway down the list).</p>
+<p>Click on &#8220;Auth&#8221; in the SSH category and add your PuTTYgen key (ppk) you just made by clicking on &#8220;Browse&#8221; and selecting the ppk file. Now click &#8220;Open&#8221;.</p>
+<img alt="Navigate to puttygen key" class="align-center" src="_images/puttyauth.jpg" />
+<p>The first time you log into a new machine, it may prompt you with a window similar to the
+one below. This is verifying the RSA fingerprint of the machine. Click &#8220;Yes&#8221;.</p>
+<img alt="Navigate to puttygen key" class="align-center" src="_images/rsafingerprint.jpg" />
+<p>Login as &#8220;ubuntu&#8221;</p>
+<img alt="Login as ubuntu" class="align-center" src="_images/puttyubuntulogin.jpg" />
+<p>You should now see something like:</p>
+<div class="highlight-python"><div class="highlight"><pre>ubuntu@ip-345-67-89-10:
+</pre></div>
+</div>
+<p>Congratulations! You&#8217;re now on the cloud computer that you launched earlier!</p>
+</div>
+<div class="section" id="analyzing-the-rna-seq-exampledata-with-sparta">
+<span id="analyzeexampledataec2"></span><h2>Analyzing the RNA-seq ExampleData with SPARTA<a class="headerlink" href="#analyzing-the-rna-seq-exampledata-with-sparta" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cloud computing with SPARTA on Amazon EC2</a><ul>
+<li><a class="reference internal" href="#create-an-amazon-web-services-account">Create an Amazon Web Services Account</a></li>
+<li><a class="reference internal" href="#mac-linux-login-procedure">Mac/Linux Login Procedure</a></li>
+<li><a class="reference internal" href="#windows-login-procedure">Windows Login Procedure</a></li>
+<li><a class="reference internal" href="#analyzing-the-rna-seq-exampledata-with-sparta">Analyzing the RNA-seq ExampleData with SPARTA</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lintut.html"
+                        title="previous chapter">Linux tutorial</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="faq.html"
+                        title="next chapter">Frequently Asked Questions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/amazonec2.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="faq.html" title="Frequently Asked Questions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lintut.html" title="Linux tutorial"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SPARTA 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Benjamin K Johnson.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
