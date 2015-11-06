@@ -3,6 +3,8 @@
 Mac OS X tutorial
 =================
 
+.. important:: There is a known issue introduced by Apple in the newer operating system (El Capitan) that does affect SPARTA. You will need to install the command line tools. To initiate that process, type 'gcc' into the terminal (without the quotes) and hit enter. From here it will ask you if you want to install the command line tools. Click 'Install' or 'Agree'. Close and re-open the terminal and proceed with the subsequent installation steps.
+
 **Download the workflow**: `SPARTA for Mac <http://www.github.com/biobenkj/SPARTA_Mac/archive/master.zip>`_
 
 #. :ref:`introduction`
