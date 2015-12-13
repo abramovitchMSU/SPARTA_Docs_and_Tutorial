@@ -146,7 +146,7 @@ Finally, let's install R. Navigate to the SPARTA_Mac folder and go to the folder
 "Install_R". Within this folder is an R installer. Double-click on the installer and follow
 the prompts to install R.
 
-.. important:: If you have OSX 10.9 (Mavericks) or higher, you will want to use version 3.2.3. If you have OSX 10.6 to 10.8, you want to use the version 3.2.1. To check which version you have, click on the Apple logo in the upper left hand corner of your screen and then click on "About This Mac". A window will appear telling you which version of OSX you have.
+.. note:: If you have OSX 10.9 (Mavericks) or higher, you will want to use version 3.2.3. If you have OSX 10.6 to 10.8, you want to use the version 3.2.1. To check which version you have, click on the Apple logo in the upper left hand corner of your screen and then click on "About This Mac". A window will appear telling you which version of OSX you have.
 
 Congratulations! You've installed the necessary dependencies to run SPARTA!
 
