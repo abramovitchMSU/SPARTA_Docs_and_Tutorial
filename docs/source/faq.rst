@@ -11,7 +11,7 @@ Not yet. Currently, SPARTA only supports single-end reads as we have found it is
 
 A GTF file is a more stringent version of a GFF file. Thus, your GFF file *may* work with HTSeq for counting transcript abundance. However, GFF file formating is more relaxed and thus, it may not work. As a potential workaround, you can open the GFF file in a plain text editor like TextEdit (Mac) or Notepad (Windows). Look at each line and see if the beginning of each line in the GFF file begins with the same phrase. In the example below the GTF line begins with *Chromosome* and the reference genome FASTA file begins with the same phrase *Chromosome*. Next, examine each line for a phrase that relates specifying a region for a gene. In the example below, HTSeq by default looks for the phrase **exon**. If your file **does not** have **exon** as the phrase, you can specify to SPARTA/HTSeq which phrase to look for through the option ``--type=your_gene_region_name`` where ``your_gene_region_name`` is the phrase specific to your file.
 
-..note: The preferred location for downloading a reference genome file and GTF file is through Ensembl (http://bacteria.ensembl.org/info/website/ftp/index.html). This list is fairly comprehensive though not exhaustive (especially if there is no reference and you've had to assemble your own/annotate it).
+.. note:: The preferred location for downloading a reference genome file and GTF file is through Ensembl (http://bacteria.ensembl.org/info/website/ftp/index.html). This list is fairly comprehensive though not exhaustive (especially if there is no reference and you've had to assemble your own/annotate it).
 
 GTF example:
 
